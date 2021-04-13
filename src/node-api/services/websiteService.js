@@ -1,11 +1,11 @@
 const websiteModel = require('../models/website');
 
-const getTop10List = () => {
-    return websiteModel.getAllItems();
+const getTop10List = async () => {
+    return await websiteModel.getAllItems();
 }
 
-const getItemDetail = (id) => {
-    return websiteModel.getItem(id)
+const getItemDetail = async (id) => {
+    return await websiteModel.getItem(id)
 }
 
 module.exports = {

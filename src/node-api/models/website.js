@@ -1,3 +1,5 @@
+const db = require('../db/db');
+
 const dummyItems = [
     {
         "id": 1,
@@ -20,12 +22,36 @@ const dummyItems = [
 
 ]
 
-const getAllItems = () => {
-    return dummyItems;
+const getAllItems = async () => {
+    const { rows } = await db.query("SELECT * FROM websites");
+    const items = rows.map((item) => {
+        return {
+            id: item.id,
+            title: item.title,
+            description: item.description,
+            asset: {
+                type: item.asset_type,
+                url: item.asset_url
+            }
+        }
+    });
+    return items;
 }
 
-const getItem = (id) => {
-    return dummyItems.find((item) => item.id == id)
+const getItem = async (id) => {
+    const { rows } = await db.query("SELECT * FROM websites WHERE id = $1", [id]);
+    const item = rows.map((item) => {
+        return {
+            id: item.id,
+            title: item.title,
+            description: item.description,
+            asset: {
+                type: item.asset_type,
+                url: item.asset_url
+            }
+        }
+    });
+    return item[0];
 }
 
 module.exports = {

@@ -4,8 +4,8 @@ const websiteService = require('../services/websiteService');
  * Get list of top 10 websites 
  * GET /list
  */
-exports.getList = (req, res) => {
-    let items = websiteService.getTop10List();
+exports.getList = async (req, res) => {
+    let items = await websiteService.getTop10List();
     res.json({items});
 }
 
@@ -13,12 +13,12 @@ exports.getList = (req, res) => {
  * Get specific item detail
  * GET /item/:id
  */
-exports.getItem = (req, res) => {
+exports.getItem = async (req, res) => {
     let itemId = req.params.id;
     if (!itemId) {
         res.status(400).send({"error": "need item id"})
         return;
     }
-    let item = websiteService.getItemDetail(itemId);
+    let item = await websiteService.getItemDetail(itemId);
     res.json({item});
 }

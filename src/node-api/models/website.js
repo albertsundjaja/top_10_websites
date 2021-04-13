@@ -30,7 +30,7 @@ const getItem = async (id) => {
 }
 
 const searchItem = async (keyword) => {
-    const { rows } = await db.query("SELECT * FROM websites WHERE title ILIKE '%' || $1 || '%'", [keyword]);
+    const { rows } = await db.query("SELECT * FROM websites WHERE search_token @@ to_tsquery($1)", [keyword]);
     const items = rows.map((item) => {
         return itemSerializer(item);
     });

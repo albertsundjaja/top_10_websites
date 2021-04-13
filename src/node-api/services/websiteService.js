@@ -5,10 +5,15 @@ const getTop10List = async () => {
 }
 
 const getItemDetail = async (id) => {
-    return await websiteModel.getItem(id)
+    return await websiteModel.getItem(id);
+}
+
+const searchItem = async (keyword) => {
+    return await websiteModel.searchItem(keyword);
 }
 
 module.exports = {
     getTop10List,
-    getItemDetail
+    getItemDetail,
+    searchItem
 }

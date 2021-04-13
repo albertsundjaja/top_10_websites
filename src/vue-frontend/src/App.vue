@@ -6,7 +6,7 @@
       dark
     >
       <div class="d-flex align-center justify-center flex-grow-1">
-        <h1 class="text-center">Top 10 Websites for Learning Guitar test</h1>
+        <h1 class="text-center">Top 10 Websites for Learning Guitar</h1>
       </div>
     </v-app-bar>
 

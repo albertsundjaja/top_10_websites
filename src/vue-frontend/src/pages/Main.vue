@@ -1,26 +1,41 @@
 <template>
     <v-container>
-        <v-row>
+        <WebsiteItemDialog :open.sync="openDetailDialog" :item="selectedItem"/>
+        <v-row v-for="website in websites" :key="website.id">
             <v-col cols="12">
-                <v-card>
-                    <v-card-title>ShredAcademy</v-card-title>
-                    <v-card-text>
-                        <p>Free guitar learning resource that have things like lick of the week for some amazing techniques.</p>
-                    </v-card-text>
-                    <youtube class="text-center" :video-id="'5olxYUmumVc'"></youtube>
-                </v-card>
+                <WebsiteItem @itemClick="handleItemClick" :item="website" />
             </v-col>
         </v-row>
     </v-container>
 </template>
 
 <script>
+import WebsiteItem from '../components/WebsiteItem';
+import WebsiteItemDialog from '../components/WebsiteItemDialog';
+import endpoints from '../config/endpoints';
+import axios from 'axios';
+
 export default {
     data: () => ({
-
+        openDetailDialog: false,
+        selectedItem: {},
+        websites: []
     }),
+    components: {
+        WebsiteItem,
+        WebsiteItemDialog
+    },
     methods: {
-        
+        handleItemClick(item) {
+            this.selectedItem = item;
+            this.openDetailDialog = true;
+        }
+    },
+    mounted() {
+        axios.get(endpoints.itemList)
+        .then((res) => {
+            this.websites = res.data.items;
+        });
     }
 }
 </script>

@@ -51,8 +51,10 @@ the database need to be constructed and populated with sample data
 you can use `psql` to do so
 
 ```
-psql -U postgres -d topten -f ./src/node-api/db/migrations/20210413_init.sql
+psql -U postgres -h localhost -d topten -f ./src/node-api/db/migrations/20210413_init.sql
 ```
+
+NOTE: if asked for password during psql execution, the default is `somepassword123`
 
 ## Test
 

@@ -27,18 +27,6 @@ Go into the project folder
 cd top_10_websites
 ```
 
-Setup the containers
-
-```
-docker-compose build
-```
-
-Create docker volume to store DB data
-
-```
-docker volume create pgvolume-topten
-```
-
 Edit the `.env.production` file for the frontend (use any text editor)
 
 the file is located at
@@ -54,19 +42,16 @@ if you are running on localhost edit the HOST address to
 VUE_APP_APIHOST=http://localhost:3000
 ```
 
-Edit the `.env` file for the node-api (use any text editor)
-
-the file is located at
+Setup the containers
 
 ```
-src/node-api/.env
+docker-compose build
 ```
 
-You will need to edit the PostgreSQL host
-if you are running on localhost edit the `POSTGRES_HOST` address to
+Create docker volume to store DB data
 
 ```
-POSTGRES_HOST=localhost
+docker volume create pgvolume-topten
 ```
 
 Spin up the containers

@@ -9,6 +9,8 @@ A search bar is provided to search for website, it will search for matches in th
 
 Upon clicking an item, a dialog will show up with more details about the website (video/image) and some recommended similar websites in the bottom.
 
+![demo](https://github.com/albertsundjaja/top_10_websites/blob/master/docs/demo.gif)
+
 ## Installation
 
 For easier deployment, this project uses `docker` and `docker-compose`, please make sure you have the latest one installed before continuing.
@@ -29,6 +31,12 @@ Setup the containers
 
 ```
 docker-compose build
+```
+
+Create docker volume to store DB data
+
+```
+docker volume create pgvolume-topten
 ```
 
 Spin up the containers

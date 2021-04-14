@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <WebsiteItemDialog :open.sync="openDetailDialog" :item="selectedItem"/>
+        <WebsiteItemDialog :open.sync="openDetailDialog" :item.sync="selectedItem"/>
         <v-row class="mt-5">
             <v-col cols="12">
                 <v-text-field outlined placeholder="Enter keyword to search" v-model="searchKeyword" @input="debounceSearchItem" :loading="searchLoading"/>

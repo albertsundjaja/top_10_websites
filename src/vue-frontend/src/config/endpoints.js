@@ -4,5 +4,6 @@ const apiHost = process.env.VUE_APP_APIHOST;
 export default {
     itemList: `${apiHost}/list`,
     item: `${apiHost}/item`,
-    searchItem: `${apiHost}/search`, 
+    searchItem: `${apiHost}/search`,
+    similarItem: `${apiHost}/similar`
 }

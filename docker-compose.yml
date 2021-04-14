@@ -9,7 +9,19 @@ services:
     volumes:
       - pgvolume-topten:/var/lib/postgresql/data
     env_file:
-      - .env
+      - ./src/node-api/.env
+
+  vue-frontend:
+    container_name: vue-topten
+    build: ./src/vue-frontend
+    ports:
+      - "8080:8080"
+    
+  node-api:
+    container_name: node-topten
+    build: ./src/node-api
+    ports:
+      - "3000:3000"
 
 volumes:
   pgvolume-topten:

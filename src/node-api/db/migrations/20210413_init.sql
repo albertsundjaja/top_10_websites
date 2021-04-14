@@ -22,10 +22,10 @@ CREATE TABLE website_tags (
 );
 
 -- to store which migration has been implemented in the DB
-CREATE TABLE migrations {
+CREATE TABLE migrations (
   id serial primary key,
   migration_file text
-};
+);
 
 INSERT INTO migrations (migration_file) VALUES ('20210413_init');
 

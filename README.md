@@ -39,6 +39,36 @@ Create docker volume to store DB data
 docker volume create pgvolume-topten
 ```
 
+Edit the `.env.production` file for the frontend (use any text editor)
+
+the file is located at
+
+```
+src/vue-frontend/.env.production
+```
+
+You will need to edit the API host (node-api) address
+if you are running on localhost edit the HOST address to
+
+```
+VUE_APP_APIHOST=http://localhost:3000
+```
+
+Edit the `.env` file for the node-api (use any text editor)
+
+the file is located at
+
+```
+src/node-api/.env
+```
+
+You will need to edit the PostgreSQL host
+if you are running on localhost edit the `POSTGRES_HOST` address to
+
+```
+POSTGRES_HOST=localhost
+```
+
 Spin up the containers
 
 ```

@@ -10,8 +10,8 @@
             <v-card-text>
                 <p>{{item.description}}</p>
                 <div class="d-flex justify-center">
-                <youtube v-if="item.asset && item.asset.type == 'youtube'" class="text-center" :video-id="getVideoId(item.asset.url)"></youtube>
-                <v-img max-width="70%" v-if="item.asset && item.asset.type == 'image'" :lazy-src="item.asset.url"></v-img>
+                    <youtube v-if="item.asset && item.asset.type == 'youtube'" class="text-center" :video-id="getVideoId(item.asset.url)"></youtube>
+                    <v-img v-if="item.asset && item.asset.type == 'image'" max-width="70%"  :src="item.asset.url" />
                 </div>
                 <div v-if="similarItems.length > 0" class="d-flex flex-column">
                     <h4>Recommended for you</h4>
@@ -54,6 +54,7 @@ export default {
             return getIdFromURL(url);
         },
         close() {
+            console.log(this.item);
             this.$emit('update:open', false);
         },
         getSimilarItems() {

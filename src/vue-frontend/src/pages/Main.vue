@@ -43,7 +43,7 @@ export default {
     methods: {
         handleItemClick(item) {
             // handle on click item to open detail dialog
-            this.selectedItem = item;
+            this.$set(this, "selectedItem", item);
             this.openDetailDialog = true;
         },
         debounceSearchItem: _.debounce(function() {

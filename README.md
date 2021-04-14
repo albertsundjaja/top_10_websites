@@ -111,3 +111,5 @@ Then it will rank the similar items using `Jaccard Index` and pick the top 3 ite
 It is known that the search functionality is not optimal in searching for items.
 This is due to the threshold in PostgreSQL in classifying whether an item is similar or not.
 This threshold need to be tweaked so that relevant items can be found more easily.
+
+The frontend is responsive, but is not really mobile friendly. There is a need to improve the UI to be mobile friendly.

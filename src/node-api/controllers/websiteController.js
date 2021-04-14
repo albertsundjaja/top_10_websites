@@ -16,7 +16,7 @@ exports.getList = async (req, res) => {
 exports.getItem = async (req, res) => {
     const itemId = req.params.id;
     if (!itemId) {
-        res.status(400).send({"error": "need item id"})
+        res.status(400).send({"error": "need item id"});
         return;
     }
     const item = await websiteService.getItemDetail(itemId);
@@ -30,9 +30,24 @@ exports.getItem = async (req, res) => {
 exports.searchItem = async (req, res) => {
     const keyword = req.query.keyword;
     if (!keyword) {
-        res.status(400).send({"error": "please input keyword"})
+        res.status(400).send({"error": "please input keyword"});
         return;
     }
     const items = await websiteService.searchItem(keyword);
-    res.json({items})
+    res.json({items});
+}
+
+/**
+ * Find similar items for the one given
+ * GET /similar?id=
+ */
+exports.getSimilarItem = async (req, res) => {
+    const id = req.query.id;
+    if (!id) {
+        res.status(400).send({"error": "please input id"});
+        return;
+    }
+
+    const items = await websiteService.findSimilarItems(id);
+    res.json({items});
 }

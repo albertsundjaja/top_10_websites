@@ -32,7 +32,23 @@ const getItem = async (id) => {
 }
 
 const searchItem = async (keyword) => {
-    const { rows } = await db.query("SELECT * FROM websites WHERE search_token @@ to_tsquery($1)", [keyword]);
+    const { rows } = await db.query("SELECT * FROM websites WHERE search_token @@ plainto_tsquery($1)", [keyword]);
+    const items = rows.map((item) => {
+        return itemSerializer(item);
+    });
+    return items;
+}
+
+const getSixSimilarItemDesc = async (keyword) => {
+    const { rows } = await db.query(`
+        SELECT w.*, jt.tags_arr, ts_rank(search_token, plainto_tsquery($1)) as score
+            FROM websites w LEFT JOIN 
+                (SELECT wt.website_id, array_agg(t.tag_name) as tags_arr 
+                    FROM website_tags wt LEFT JOIN tags t ON wt.tag_id = t.id GROUP BY wt.website_id) jt 
+            ON w.id = jt.website_id
+        ORDER BY score DESC LIMIT 6;`,
+        [keyword]
+    );
     const items = rows.map((item) => {
         return itemSerializer(item);
     });
@@ -42,5 +58,6 @@ const searchItem = async (keyword) => {
 module.exports = {
     getAllItems,
     getItem,
-    searchItem
+    searchItem,
+    getSixSimilarItemDesc
 }

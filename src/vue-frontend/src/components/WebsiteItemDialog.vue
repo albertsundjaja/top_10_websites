@@ -6,7 +6,7 @@
             <div class="d-flex justify-end">
                 <v-btn plain @click="close">Close</v-btn>
             </div>
-            <v-card-title>{{item.title}}</v-card-title>
+            <v-card-title><a :href="item.url">{{item.title}}</a></v-card-title>
             <v-card-text>
                 <p>{{item.description}}</p>
                 <div class="d-flex justify-center">

@@ -38,9 +38,9 @@ INSERT INTO website_tags (website_id, tag_id) (SELECT w.id, t.id FROM websites w
 INSERT INTO website_tags (website_id, tag_id) (SELECT w.id, t.id FROM websites w CROSS JOIN tags t WHERE w.title='GuitarLessons' and t.tag_name='video');
 
 INSERT INTO websites (title, description, url, asset_type, asset_url) VALUES ('Guitar World', 'A youtube channel with awesome community. There is a lot of stuffs here to learn.', 'https://www.youtube.com/channel/UCqHkFMEmOPFO3ahcrrBAj4w', 'youtube', 'https://www.youtube.com/watch?v=7u8-RTJkM_g&t=4s&ab_channel=GuitarWorld');
-INSERT INTO website_tags (website_id, tag_id) (SELECT w.id, t.id FROM websites w CROSS JOIN tags t WHERE w.title='GuitarLessons' and t.tag_name='free');
-INSERT INTO website_tags (website_id, tag_id) (SELECT w.id, t.id FROM websites w CROSS JOIN tags t WHERE w.title='GuitarLessons' and t.tag_name='youtube');
-INSERT INTO website_tags (website_id, tag_id) (SELECT w.id, t.id FROM websites w CROSS JOIN tags t WHERE w.title='GuitarLessons' and t.tag_name='fun');
+INSERT INTO website_tags (website_id, tag_id) (SELECT w.id, t.id FROM websites w CROSS JOIN tags t WHERE w.title='Guitar World' and t.tag_name='free');
+INSERT INTO website_tags (website_id, tag_id) (SELECT w.id, t.id FROM websites w CROSS JOIN tags t WHERE w.title='Guitar World' and t.tag_name='youtube');
+INSERT INTO website_tags (website_id, tag_id) (SELECT w.id, t.id FROM websites w CROSS JOIN tags t WHERE w.title='Guitar World' and t.tag_name='fun');
 
 INSERT INTO websites (title, description, url, asset_type, asset_url) VALUES ('ArtistWorks', 'A school for guitarists. You subscribe and learn from some amazing instructors.', 'https://artistworks.com/', 'image', 'https://my.artistworks.com/sites/default/files/u189178/Dobro-Lesson_Blog.jpg');
 INSERT INTO website_tags (website_id, tag_id) (SELECT w.id, t.id FROM websites w CROSS JOIN tags t WHERE w.title='ArtistWorks' and t.tag_name='paid');
